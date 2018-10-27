@@ -1,0 +1,101 @@
+import { FullScreenCode, Main, Section, SectionInverted } from '@jakepartusch/opi-mdx-theme'
+import { Image } from 'mdx-deck'
+import { CodeSurfer } from "mdx-deck-code-surfer"
+
+export default Section
+
+# So...
+---
+![](https://i.imgflip.com/2hj5s9.jpg)
+---
+export default Section
+
+# The Problem
+- You are the designated "Pizza Person"
+- You _love_ pizza 🍕
+- You _loathe_ ordering it for every meeting
+---
+<Image src='https://media3.giphy.com/media/l4KhPbIIDgO3sMw0w/giphy.gif'/>
+---
+export default Section
+
+ # Chatbot!!
+ 1. Create a Lex bot to take the pizza order
+ 2. Integrate with your team's Slack channel
+ 3. ????
+ 4. Profit 
+---
+export default Section
+
+# The Lambda
+---
+export default Section
+
+## Features
+- Prices an order
+- Accepts multiple sizes and types
+- Integrates with Lex
+---
+export default Section
+
+## Limitations
+- Can only order one pizza
+- Only accepts one topping
+- Address and store locations are hard-coded
+---
+export default Section
+
+## Tech Stack
+- TypeScript
+- Deployed with [Serverless](https://serverless.com/)
+- [Source Code](https://github.com/JakePartusch/pizza-bot-lambda)
+---
+<CodeSurfer
+  title="Lex Request/Response"
+  code={require("!raw-loader!./lex.ts")}
+  lang="typescript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { lines: [3] },
+    { range: [4, 8] },
+    { range: [12, 16] },
+    { lines: [21] },
+    { lines: [24] },
+    { lines: [25] },
+    { range: [27, 32] },
+    { lines: [33] },
+    { range: [34, 37] },
+  ]}
+/>
+---
+---
+<CodeSurfer
+  title="Order Pizza Lambda"
+  code={require("!raw-loader!./lambda.ts")}
+  lang="typescript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { range: [6, 7] },
+    { range: [11, 12] },
+    { range: [14, 15] },
+    { range: [17, 18] },
+    { range: [21, 23] },
+    { range: [25, 28] },
+    { lines: [30] },
+    { range: [31, 36] },
+  ]}
+/>
+---
+export default Section
+
+# Demo
+---
+export default Section
+
+ ## Extra Credit
+ 1. Create a Lex bot to take the pizza order
+ 2. Handle phone calls with Connect
+ 3. ????
+ 4. Profit 

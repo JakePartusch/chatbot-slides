@@ -1,18 +1,25 @@
 {
-  "name": "chat-bot-slides",
+  "name": "@jakepartusch/chatbot-presentation",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx --no-html && cp -r ./assets ./dist"
+    "build": "mdx-deck build deck.js --no-html --webpack webpack.config.js && cp -r ./assets ./dist",
+    "postbuild": "npm run build:pdf",
+    "build:pdf": "mdx-deck pdf deck.js",
+    "start": "mdx-deck deck.js --webpack webpack.config.js"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "mdx-deck": "^1.7.3",
-    "mdx-deck-code-surfer": "^0.4.1",
-    "raw-loader": "^0.5.1"
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "mdx-deck": "^1.7.4",
+    "style-loader": "^0.23.0"
+  },
+  "dependencies": {
+    "mdx-deck-code-surfer": "^0.5.3",
+    "@jakepartusch/opi-mdx-theme": "^0.0.2",
+    "raw-loader": "^0.5.1",
+    "typeface-space-mono": "^0.0.54",
+    "typeface-spectral": "^0.0.54"
   }
 }
