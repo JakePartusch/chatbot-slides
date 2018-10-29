@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "mdx-deck-code-surfer": "^0.5.3",
-    "@jakepartusch/opi-mdx-theme": "^0.0.2",
+    "@jakepartusch/opi-mdx-theme": "^0.0.3",
     "raw-loader": "^0.5.1",
     "typeface-space-mono": "^0.0.54",
     "typeface-spectral": "^0.0.54"

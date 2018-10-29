@@ -23,9 +23,9 @@
     dotenv "^5.0.1"
     got "^8.3.0"
 
-"@jakepartusch/opi-mdx-theme@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@jakepartusch/opi-mdx-theme/-/opi-mdx-theme-0.0.2.tgz#c5fca4a77d6ef7d823f91026e27ded823d0d494f"
+"@jakepartusch/opi-mdx-theme@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@jakepartusch/opi-mdx-theme/-/opi-mdx-theme-0.0.3.tgz#a95c82770996a0454afa1bf32115bd327c2ad686"
 
 "@mdx-js/mdx@^0.15.0":
   version "0.15.3"
