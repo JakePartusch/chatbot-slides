@@ -3,8 +3,9 @@ import { PizzaSize, PizzaType } from './pizza'
 export interface LexEvent {
   currentIntent: {
     slots: {
-      PizzaType: PizzaType
-      PizzaSize: PizzaSize
+      StreetAddress: string;
+      ZipCode: string;
+      County: "Douglas" | "Sarpy"
     }
     name: string
     confirmationStatus: 'None' | 'Confirmed' | 'Denied'
@@ -24,10 +25,18 @@ export interface LexEvent {
 export interface LexResponse {
   sessionAttributes: object
   dialogAction: {
-    type: 'ElicitIntent' | 'ElicitSlot' | 'ConfirmIntent' | 'Delegate' | 'Close'
+    type:
+      | "ElicitIntent"
+      | "ElicitSlot"
+      | "ConfirmIntent"
+      | "Delegate"
+      | "Close";
     fulfillmentState: 'Fulfilled' | 'Failed'
     message: {
-      contentType: 'PlainText' | 'SSML' | 'CustomPayload'
+      contentType:  
+        | 'PlainText' 
+        | 'SSML' 
+        | 'CustomPayload'
       content: string
     }
   }

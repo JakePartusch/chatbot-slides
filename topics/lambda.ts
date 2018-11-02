@@ -1,35 +1,29 @@
-import { priceOrder, buildPizza } from './pizza/pizza'
-import { buildSuccessfulResponse, buildErrorResponse } from './utils/lex.utils'
-import { LexEvent, LexResponse } from '../types/lex'
+import { buildSuccessfulResponse } from './utils/lex.utils';
+import { LexEvent, LexResponse } from '../types/lex';
+import PollingPlaceApi from './api/pollingPlaceApi';
 
-module.exports.orderPizza = async (event: LexEvent): Promise<LexResponse> => {
-  try {
-    console.log(JSON.stringify(event, null, 2))
+module.exports.retrievePollingPlace = 
+  async (event: LexEvent): Promise<LexResponse> => {
 
-    //Grab the data from the Lex Slots
-    const { PizzaType, PizzaSize } = event.currentIntent.slots
+  const { StreetAddress, ZipCode, County } 
+    = event.currentIntent.slots;
 
-    //Build a pizza object from the given Slots
-    const pizza = buildPizza([PizzaType], PizzaSize)
+  //Sarpy 301600, Douglas 301400
+  const countyCode = County === 'Douglas' ? 301400 : 301600;
 
-    //Make an async call to the Dominos API
-    const response = await priceOrder(pizza)
-    console.log(JSON.stringify(response.data, null, 2))
+  const sessionCookie = await PollingPlaceApi.getSessionCookie();
+  
+  const pollingLocation = await PollingPlaceApi.fetchPollingPlace(
+    StreetAddress,
+    ZipCode,
+    countyCode,
+    sessionCookie
+  );
 
-    //Build the response message
-    const { Payment } = response.data.Order.Amounts
-    const { EstimatedWaitMinutes } = response.data.Order
+  console.log(JSON.stringify(pollingLocation, null, 2));
 
-    const message = `Your total will be, $${Payment}. And your 
-      estimated wait time is ${EstimatedWaitMinutes} minutes. 
-      Please have cash or a credit card ready when your pizza 
-      is delivered.`
-
-    return buildSuccessfulResponse(message)
-  } catch (e) {
-    console.error(e)
-    return buildErrorResponse(
-      'We are unable to process your request at this time'
-    )
-  }
-}
+  return buildSuccessfulResponse(
+    `Your polling place is ${pollingLocation.name}, 
+    which is located at: ${pollingLocation.address}`
+  );
+};
